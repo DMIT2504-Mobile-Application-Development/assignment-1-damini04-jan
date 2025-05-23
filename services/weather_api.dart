@@ -12,3 +12,10 @@ Future<dynamic> getWeatherForCity({required String city}) async {
     if (res.statusCode == 200) {
       final data = jsonDecode(res.body);
       return data;
+    } else {
+      throw Exception('There was a problem with the request: status ${res.statusCode} received');
+    }
+  } catch (e) {
+    throw Exception('There was a problem with the request: $e');
+  }
+}
