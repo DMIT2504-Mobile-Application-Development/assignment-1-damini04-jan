@@ -7,3 +7,8 @@ const String currentWeatherEndpoint = 'https://api.openweathermap.org/data/2.5/w
 Future<dynamic> getWeatherForCity({required String city}) async {
   final url = Uri.parse('$currentWeatherEndpoint?units=metric&q=$city&appid=$weatherApiKey');
   //print('[DEBUG ] URL= $url');
+  try {
+    final res = await http.get(url);
+    if (res.statusCode == 200) {
+      final data = jsonDecode(res.body);
+      return data;
