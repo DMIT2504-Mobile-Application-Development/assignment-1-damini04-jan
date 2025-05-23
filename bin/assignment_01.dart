@@ -7,4 +7,3 @@ void main(List<String> arguments) async {
 
   print(weather);
 }
-hello
